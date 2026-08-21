@@ -3,6 +3,7 @@ import { useRef } from 'react'
 import { useInView } from 'framer-motion'
 import { FiAward, FiCheckCircle, FiShoppingBag, FiTarget } from 'react-icons/fi'
 import { MdOutlineVerified } from 'react-icons/md'
+import IsoLogo from '../components/IsoLogo'
 import AnimatedSection from '../components/AnimatedSection'
 import './About.css'
 
@@ -94,7 +95,7 @@ export default function About() {
           <AnimatedSection variant="slideRight" className="about-story__visual">
             <div className="about-badge-grid">
               <div className="about-badge glass-card">
-                <MdOutlineVerified className="about-badge__icon" />
+                <IsoLogo className="about-badge__icon" />
                 <h4>ISO Certified</h4>
                 <p>First in Anchal city</p>
               </div>

@@ -13,6 +13,7 @@ import {
   MdOutlineDashboard, MdOutlineFavorite
 } from 'react-icons/md'
 import AnimatedSection from '../components/AnimatedSection'
+import IsoLogo from '../components/IsoLogo'
 import heroBanner from '../assets/hero_banner.png'
 import nestleLogo  from '../assets/nestle.png'  // bg-removed v2
 import itcLogo     from '../assets/itc.png'     // bg-removed v3
@@ -76,10 +77,10 @@ const whyChoose = [
     accent: '#10b981',
   },
   {
-    icon: <FiShoppingBag />,
+    icon: <IsoLogo />,
     title: 'ISO Certified',
     desc: 'We are the first ISO certified Supermarket in Anchal city. This internationally recognised standard ensures services meet the needs of clients through an effective quality management system.',
-    accent: '#f59e0b',
+    accent: '#3db843',
   },
 ]
 
