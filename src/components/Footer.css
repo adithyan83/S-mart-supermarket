@@ -1,8 +1,9 @@
 /* Footer Styles */
 .footer {
-  background: var(--clr-bg-2);
-  border-top: 1px solid var(--glass-border);
+  background: #111111;
+  border-top: 1px solid #222222;
   margin-top: auto;
+  color: #a3a3a3;
 }
 
 .footer__top {
@@ -11,8 +12,8 @@
 
 .footer__grid {
   display: grid;
-  grid-template-columns: 1.4fr 1.2fr 1.2fr 1.2fr;
-  gap: var(--space-2xl);
+  grid-template-columns: 1.6fr 1.1fr 1.1fr 1.1fr 1.1fr;
+  gap: var(--space-xl);
 }
 
 /* Brand */
@@ -40,7 +41,7 @@
 .footer__logo-name {
   font-size: 1.3rem;
   font-weight: 900;
-  color: var(--clr-white);
+  color: #ffffff;
   letter-spacing: 2px;
 }
 
@@ -53,7 +54,7 @@
 
 .footer__desc {
   font-size: 0.9rem;
-  color: var(--clr-text-muted);
+  color: #a3a3a3;
   line-height: 1.7;
   margin-bottom: var(--space-md);
 }
@@ -70,9 +71,9 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-sm);
-  background: var(--clr-card);
-  border: 1px solid var(--glass-border);
-  color: var(--clr-text-muted);
+  background: #222222;
+  border: 1px solid #333333;
+  color: #a3a3a3;
   font-size: 1rem;
   transition: all var(--transition-fast);
 }
@@ -104,7 +105,7 @@
 
 .footer__link {
   font-size: 0.875rem;
-  color: var(--clr-text-muted);
+  color: #a3a3a3;
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -112,7 +113,7 @@
   font-style: normal;
 }
 
-.footer__link:hover { color: var(--clr-white); }
+.footer__link:hover { color: #ffffff; }
 
 .footer__link-arrow {
   color: var(--clr-accent);
@@ -141,14 +142,14 @@
 
 .footer__address {
   font-size: 0.875rem;
-  color: var(--clr-text-muted);
+  color: #a3a3a3;
   font-style: normal;
   line-height: 1.6;
 }
 
 /* Bottom Bar */
 .footer__bottom {
-  border-top: 1px solid var(--glass-border);
+  border-top: 1px solid #222222;
   padding: var(--space-md) 0;
 }
 
@@ -162,12 +163,12 @@
 
 .footer__copy {
   font-size: 0.8rem;
-  color: var(--clr-text-dark);
+  color: #737373;
 }
 
 .footer__powered {
   font-size: 0.8rem;
-  color: var(--clr-text-dark);
+  color: #737373;
 }
 
 .footer__powered-link {

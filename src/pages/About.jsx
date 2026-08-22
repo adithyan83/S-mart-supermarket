@@ -14,18 +14,10 @@ const pageVariants = {
 }
 
 function CounterStat({ target, suffix = '', label }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
   return (
-    <div ref={ref} className="about-stat">
+    <div className="about-stat">
       <div className="about-stat__val">
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.3 }}
-        >
-          {isInView ? target : '0'}
-        </motion.span>
+        <span>{target}</span>
         {suffix}
       </div>
       <div className="about-stat__label">{label}</div>

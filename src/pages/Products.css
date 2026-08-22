@@ -73,9 +73,9 @@
 }
 
 .filter-btn:hover {
-  color: var(--clr-white);
+  color: var(--clr-text);
   background: var(--clr-card-hover);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--clr-primary);
 }
 
 .filter-btn--active {
@@ -109,7 +109,7 @@
   transform: translateY(-6px);
   border-color: var(--prod-color, var(--clr-primary));
   box-shadow: 
-    0 12px 40px rgba(0, 0, 0, 0.4), 
+    0 12px 40px rgba(0, 0, 0, 0.06), 
     0 0 25px color-mix(in srgb, var(--prod-color, var(--clr-primary)) 15%, transparent);
 }
 
@@ -141,7 +141,7 @@
 .product-card__title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--clr-white);
+  color: var(--clr-text);
   margin-bottom: 0.15rem;
 }
 
@@ -174,13 +174,13 @@
   gap: 0.4rem;
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--clr-primary-light);
+  color: var(--clr-primary-dark);
   transition: all var(--transition-fast);
   margin-top: auto;
 }
 
 .product-card__btn:hover {
-  color: var(--clr-white);
+  color: var(--clr-primary);
 }
 
 .product-card__btn svg {
@@ -274,11 +274,11 @@
   align-items: center;
   justify-content: space-between;
   padding: var(--space-xl);
-  background: linear-gradient(135deg, rgba(61,184,67,0.05) 0%, rgba(20,20,20,0.6) 100%);
+  background: linear-gradient(135deg, rgba(61,184,67,0.08) 0%, rgba(255,255,255,0.9) 100%);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   margin-top: var(--space-3xl);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
 }
@@ -325,7 +325,7 @@
 .help-banner__title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--clr-white);
+  color: var(--clr-text);
 }
 
 .help-banner__subtitle {

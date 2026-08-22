@@ -81,7 +81,11 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-            <h4 className="footer__heading" style={{ marginTop: '1.5rem' }}>Blog Feeds</h4>
+          </div>
+
+          {/* Blog Feeds */}
+          <div className="footer__col">
+            <h4 className="footer__heading">Blog Feeds</h4>
             <ul className="footer__list">
               {blogPosts.map((post) => (
                 <li key={post}>

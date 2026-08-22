@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import {
   FiShoppingBag, FiStar, FiAward, FiUsers, FiTruck, FiCheckCircle,
-  FiArrowRight
+  FiArrowRight, FiMapPin, FiShield
 } from 'react-icons/fi'
 import {
   MdOutlineLocalGroceryStore, MdOutlineEco, MdOutlineLocalDrink,
@@ -15,12 +15,12 @@ import {
 import AnimatedSection from '../components/AnimatedSection'
 import IsoLogo from '../components/IsoLogo'
 import heroBanner from '../assets/hero_banner.png'
-import nestleLogo  from '../assets/nestle.png'  // bg-removed v2
-import itcLogo     from '../assets/itc.png'     // bg-removed v3
-import daburLogo   from '../assets/dabur.png'   // bg-removed v3
-import easternLogo from '../assets/eastern.png' // bg-removed v1
-import parleLogo   from '../assets/parle.png'   // bg-removed v1
-import pepsicoLogo from '../assets/pepsico.png' // bg-removed v1
+import nestleLogo from '../assets/nestle.svg'
+import itcLogo from '../assets/itc.svg'
+import daburLogo from '../assets/dabur.svg'
+import easternLogo from '../assets/eastern.png'
+import parleLogo from '../assets/parle.svg'
+import pepsicoLogo from '../assets/pepsico.svg'
 import './Home.css'
 
 /* ── Data ─────────────────────────────────────────── */
@@ -87,26 +87,32 @@ const whyChoose = [
 const testimonials = [
   {
     text: '"I am quite happy with s-mart they supply quality products at affordable rates"',
-    name: 'Balu Joseph',
-    role: 'Regular Customer',
-    avatar: 'BJ',
+    name: 'Anjali R.',
+    role: 'Customer',
+    avatar: 'AR',
   },
   {
-    text: '"Excellent customer service. Its so nice and refreshing to be greeted with a smile. Everything is available at reasonable prices"',
-    name: 'Vivek Nair',
-    role: 'Loyal Customer',
-    avatar: 'VN',
+    text: '"Excellent customer service. It is a nice and refreshing to be greeted with a smile. Everything is available at reasonable prices!"',
+    name: 'Rahul S.',
+    role: 'Customer',
+    avatar: 'RS',
   },
 ]
 
-
 const brands = [
-  { label: 'Nestle'  },
-  { label: 'ITC'     },
-  { label: 'Dabur'   },
+  { label: 'Nestle' },
+  { label: 'ITC' },
+  { label: 'Dabur' },
   { label: 'Eastern' },
-  { label: 'Parle'   },
+  { label: 'Parle' },
   { label: 'Pepsico' },
+]
+
+const stats = [
+  { val: '70+', label: 'Years Experience', icon: <FiShield /> },
+  { val: '100+', label: 'FMCG Brands', icon: <MdOutlineEco /> },
+  { val: 'ISO', label: 'Certified', icon: <FiAward /> },
+  { val: '1st', label: 'In Anchal', icon: <FiAward /> }
 ]
 
 /* ── Page Transition ─────────────────────────────── */
@@ -143,12 +149,12 @@ export default function Home() {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <motion.span
-              className="badge badge-accent hero__badge"
+              className="badge hero__badge"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
             >
-              ✦ Est. 2006 • Anchal, Kerala
+              <FiMapPin style={{ marginRight: '4px' }} /> Est. 2006 - Anchal, Kerala
             </motion.span>
 
             <h1 className="hero__title">
@@ -164,10 +170,13 @@ export default function Home() {
             </p>
 
             <div className="hero__stats">
-              {[['70+', 'Years Experience'], ['100+', 'FMCG Brands'], ['ISO', 'Certified'], ['1st', 'In Anchal']].map(([val, label]) => (
-                <div key={label} className="hero__stat">
-                  <span className="hero__stat-val">{val}</span>
-                  <span className="hero__stat-label">{label}</span>
+              {stats.map((item) => (
+                <div key={item.label} className="hero__stat">
+                  <div className="hero__stat-icon">{item.icon}</div>
+                  <div className="hero__stat-info">
+                    <span className="hero__stat-val">{item.val}</span>
+                    <span className="hero__stat-label">{item.label}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -297,16 +306,16 @@ export default function Home() {
                   const logoSrc = logoMap[brand.label]
                   // Per-logo size tweaks to visually normalise shapes
                   const sizeMap = {
-                    ITC:     { width: '150px', height: '90px' },
-                    Nestle:  { width: '120px', height: '70px' },
-                    Dabur:   { width: '120px', height: '70px' },
+                    ITC: { width: '150px', height: '90px' },
+                    Nestle: { width: '120px', height: '70px' },
+                    Dabur: { width: '120px', height: '70px' },
                     Eastern: { width: '120px', height: '70px' },
-                    Parle:   { width: '120px', height: '70px' },
+                    Parle: { width: '120px', height: '70px' },
                     Pepsico: { width: '120px', height: '70px' },
                   }
                   const imgStyle = sizeMap[brand.label] || {}
                   return (
-                    <div key={`${brand.label}-${i}`} className="brand-item">
+                    <div key={`${brand.label}-${i}`} className="brand-item" data-brand={brand.label}>
                       {logoSrc ? (
                         <img
                           src={logoSrc}
