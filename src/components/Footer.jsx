@@ -185,9 +185,7 @@ export default function Footer() {
           <p className="footer__copy">
             Copyright © {new Date().getFullYear()} S-MART. All rights reserved.
           </p>
-          <p className="footer__powered">
-            Powered by <a href="#" className="footer__link footer__powered-link">Altiztech</a>
-          </p>
+
         </div>
       </div>
       

@@ -140,10 +140,7 @@ export default function Home() {
             </motion.span>
 
             <h1 className="hero__title">
-              Welcome to{' '}
-              <span className="gradient-text">S-MART</span>
-              <br />
-              Supermarket
+              Welcome to <span style={{ display: 'inline-block' }}><span className="gradient-text">S-MART</span> Supermarket</span>
             </h1>
 
             <p className="hero__subtitle">
