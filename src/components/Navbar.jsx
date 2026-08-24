@@ -28,6 +28,14 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
+  /* Close drawer + scroll to top — used by all mobile nav links */
+  const handleNavClick = () => {
+    setMenuOpen(false)
+    window.scrollTo(0, 0)
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+  }
+
   return (
     <>
       <header className="header-wrapper">
@@ -110,58 +118,64 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
-            className="mobile-menu"
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.35, ease: 'easeInOut' }}
-          >
-            <ul className="mobile-menu__links">
-              {navLinks.map((link, i) => (
-                <motion.li
-                  key={link.to}
-                  initial={{ opacity: 0, x: 40 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.07, duration: 0.3 }}
-                >
-                  <NavLink
-                    to={link.to}
-                    end={link.to === '/'}
-                    className={({ isActive }) =>
-                      `mobile-menu__link ${isActive ? 'mobile-menu__link--active' : ''}`
-                    }
-                    onClick={() => setMenuOpen(false)}
+          <>
+            <motion.div
+              className="mobile-menu__overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.22 }}
+              onClick={() => setMenuOpen(false)}
+            />
+            <motion.div
+              className="mobile-menu"
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <ul className="mobile-menu__links">
+                {navLinks.map((link, i) => (
+                  <motion.li
+                    key={link.to}
+                    initial={{ opacity: 0, x: 40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.02, duration: 0.15, ease: 'easeOut' }}
                   >
-                    {link.label}
-                    {link.label === 'Products' && <FiChevronDown className="navbar__chevron" />}
-                  </NavLink>
-                </motion.li>
-              ))}
-            </ul>
+                    <NavLink
+                      to={link.to}
+                      end={link.to === '/'}
+                      className={({ isActive }) =>
+                        `mobile-menu__link ${isActive ? 'mobile-menu__link--active' : ''}`
+                      }
+                      onClick={handleNavClick}
+                    >
+                      {link.label}
+                      {link.label === 'Products' && <FiChevronDown className="navbar__chevron" />}
+                    </NavLink>
+                  </motion.li>
+                ))}
+              </ul>
 
-            <div className="mobile-menu__cta-wrapper">
-              <Link
-                to="/offers"
-                className="btn btn-primary mobile-menu__cta"
-                onClick={() => setMenuOpen(false)}
-              >
-                <FiTag />
-                Today's Deals
-              </Link>
-            </div>
+              <div className="mobile-menu__cta-wrapper">
+                <Link
+                  to="/offers"
+                  className="btn btn-primary mobile-menu__cta"
+                  onClick={handleNavClick}
+                >
+                  <FiTag />
+                  Today's Deals
+                </Link>
+              </div>
 
-            <div className="mobile-menu__footer">
-              <p>📍 R.O Junction, Anchal, Kollam</p>
-              <p>📞 0475-2270677</p>
-            </div>
-          </motion.div>
+              <div className="mobile-menu__footer">
+                <p>📍 R.O Junction, Anchal, Kollam</p>
+                <p>📞 0475-2270677</p>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-
-      {menuOpen && (
-        <div className="mobile-menu__overlay" onClick={() => setMenuOpen(false)} />
-      )}
     </>
 )
 }

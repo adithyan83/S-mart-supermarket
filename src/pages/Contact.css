@@ -232,10 +232,63 @@
 
 /* Responsive */
 @media (max-width: 900px) {
-  .contact-info-grid { grid-template-columns: 1fr; }
+  .contact-info-grid {
+    /* 2 equal columns — Phone & Email share row 1, Location spans both in row 2 */
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch; /* make both row-1 cells the same height */
+  }
+
+  /* Each card fills its full grid cell height */
+  .contact-info-grid > * {
+    height: 100%;
+  }
+
+  .contact-info-card {
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Location card (3rd child) spans both columns and centres itself */
+  .contact-info-grid > *:nth-child(3) {
+    grid-column: 1 / -1;
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
+    height: auto; /* location doesn't need to stretch */
+  }
+
   .contact-main { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
   .form-row { grid-template-columns: 1fr; }
+
+  /* Keep the 2-col grid on smaller phones but tighten the gap */
+  .contact-info-grid {
+    gap: var(--space-sm);
+  }
+
+  /* Compact card padding on very small screens */
+  .contact-info-card {
+    padding: var(--space-md);
+    gap: var(--space-sm);
+    flex-direction: column;  /* stack icon above text for narrow cards */
+    align-items: flex-start;
+  }
+
+  .contact-info-card__icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  /* Shrink phone numbers so two lines don't inflate the card height */
+  .contact-info-card__body p {
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .contact-info-card__body h3 {
+    font-size: 0.875rem;
+  }
 }
