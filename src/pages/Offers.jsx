@@ -30,7 +30,7 @@ export default function Offers() {
               Offers will be <span className="gradient-text">updated soon</span>..
             </h1>
             <p className="offers-coming-soon__subtitle">
-              We're working on exclusive deals for you. Stay tuned!
+              We're working on exclusive deals for you.<br className="offers-break" /> Stay tuned!
             </p>
           </AnimatedSection>
         </div>

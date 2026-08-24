@@ -66,6 +66,17 @@
   line-height: 1.7;
 }
 
+/* Hidden on desktop — only breaks to a new line on mobile */
+.offers-break {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .offers-break {
+    display: block;
+  }
+}
+
 
 .featured-offers-grid {
   display: grid;
