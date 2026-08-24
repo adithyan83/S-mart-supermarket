@@ -108,9 +108,7 @@
 .product-card:hover {
   transform: translateY(-6px);
   border-color: var(--prod-color, var(--clr-primary));
-  box-shadow: 
-    0 12px 40px rgba(0, 0, 0, 0.06), 
-    0 0 25px color-mix(in srgb, var(--prod-color, var(--clr-primary)) 15%, transparent);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
 }
 
 /* Left Content Column */

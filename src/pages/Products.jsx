@@ -24,6 +24,12 @@ import footwearImg from '../assets/footwear_card.png'
 import cosmeticsImg from '../assets/cosmetics_card.png'
 import fashionImg from '../assets/fashion_card.png'
 import personalCareImg from '../assets/personal_care_card.png'
+import homeCareImg from '../assets/home_care.png'
+import householdUtensilsImg from '../assets/household_utensils.png'
+import stationaryImg from '../assets/stationary.png'
+import booksMagazinesImg from '../assets/books_magazines.png'
+import toysImg from '../assets/toys.png'
+import giftItemsImg from '../assets/gift_items.png'
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -131,7 +137,7 @@ const products = [
     color: '#6366f1',
     count: '70+ Products',
     items: ['Detergent', 'Floor Cleaner', 'Dish Wash', 'Air Freshener'],
-    image: null
+    image: homeCareImg
   },
   {
     icon: <MdOutlineKitchen />,
@@ -140,7 +146,7 @@ const products = [
     color: '#64748b',
     count: '65+ Products',
     items: ['Plates', 'Cups', 'Bowls', 'Cooking Pots'],
-    image: null
+    image: householdUtensilsImg
   },
   {
     icon: <MdOutlineMovie />,
@@ -158,7 +164,7 @@ const products = [
     color: '#0ea5e9',
     count: '110+ Products',
     items: ['Pens', 'Notebooks', 'Files', 'Erasers'],
-    image: null
+    image: stationaryImg
   },
   {
     icon: <MdOutlineMenuBook />,
@@ -167,7 +173,7 @@ const products = [
     color: '#78716c',
     count: '85+ Products',
     items: ['Novels', 'Magazines', 'Academic Books', 'Comics'],
-    image: null
+    image: booksMagazinesImg
   },
   {
     icon: <MdOutlineToys />,
@@ -176,7 +182,7 @@ const products = [
     color: '#f97316',
     count: '75+ Products',
     items: ['Educational', 'Action Figures', 'Board Games', 'Puzzles'],
-    image: null
+    image: toysImg
   },
   {
     icon: <MdOutlineCardGiftcard />,
@@ -185,7 +191,7 @@ const products = [
     color: '#e11d48',
     count: '40+ Products',
     items: ['Gift Hampers', 'Greeting Cards', 'Decoratives'],
-    image: null
+    image: giftItemsImg
   },
   {
     icon: <MdOutlineLocalFireDepartment />,
