@@ -59,20 +59,14 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* CTA */}
-          <div className="navbar__actions">
-            <Link to="/offers" className="btn btn-accent navbar__cta">
-              <FiShoppingCart size={16} />
-              Today's Deals
-            </Link>
-            <button
-              className="navbar__hamburger"
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="Toggle menu"
-            >
-              {menuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
-            </button>
-          </div>
+          {/* Hamburger button (mobile only) */}
+          <button
+            className="navbar__hamburger"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+          </button>
         </div>
       </motion.nav>
 

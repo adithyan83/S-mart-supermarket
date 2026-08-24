@@ -1,7 +1,9 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {
-  FiPhone, FiMail, FiMapPin, FiInstagram, FiFacebook, FiTwitter
+  FiPhone, FiMail, FiMapPin, FiInstagram, FiFacebook, FiTwitter, FiChevronUp
 } from 'react-icons/fi'
+import { FaWhatsapp } from 'react-icons/fa'
 import './Footer.css'
 
 const popularCategories = [
@@ -31,6 +33,34 @@ const blogPosts = [
 ]
 
 export default function Footer() {
+  const [expandedSections, setExpandedSections] = useState({
+    popular: false,
+    links: false,
+    blog: false,
+    touch: false,
+  })
+  
+  const [showScrollTop, setShowScrollTop] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const toggleSection = (section) => {
+    setExpandedSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }))
+  }
+
   return (
     <footer className="footer">
       <div className="footer__top">
@@ -51,14 +81,20 @@ export default function Footer() {
             <div className="footer__socials">
               <a href="#" aria-label="Facebook" className="footer__social-icon"><FiFacebook /></a>
               <a href="#" aria-label="Instagram" className="footer__social-icon"><FiInstagram /></a>
+              <a href="https://wa.me/919349167973" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="footer__social-icon"><FaWhatsapp /></a>
               <a href="#" aria-label="Twitter" className="footer__social-icon"><FiTwitter /></a>
             </div>
           </div>
 
           {/* Popular Categories */}
           <div className="footer__col">
-            <h4 className="footer__heading">Popular Category</h4>
-            <ul className="footer__list">
+            <h4 className="footer__heading" onClick={() => toggleSection('popular')}>
+              Popular Category
+              <span className="footer__accordion-toggle">
+                {expandedSections.popular ? '−' : '+'}
+              </span>
+            </h4>
+            <ul className={`footer__list ${expandedSections.popular ? 'footer__list--open' : ''}`}>
               {popularCategories.map((cat) => (
                 <li key={cat}>
                   <Link to="/products" className="footer__link">
@@ -71,8 +107,13 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="footer__col">
-            <h4 className="footer__heading">Quick Links</h4>
-            <ul className="footer__list">
+            <h4 className="footer__heading" onClick={() => toggleSection('links')}>
+              Quick Links
+              <span className="footer__accordion-toggle">
+                {expandedSections.links ? '−' : '+'}
+              </span>
+            </h4>
+            <ul className={`footer__list ${expandedSections.links ? 'footer__list--open' : ''}`}>
               {quickLinks.map((link) => (
                 <li key={link.label}>
                   <Link to={link.to} className="footer__link">
@@ -85,8 +126,13 @@ export default function Footer() {
 
           {/* Blog Feeds */}
           <div className="footer__col">
-            <h4 className="footer__heading">Blog Feeds</h4>
-            <ul className="footer__list">
+            <h4 className="footer__heading" onClick={() => toggleSection('blog')}>
+              Blog Feeds
+              <span className="footer__accordion-toggle">
+                {expandedSections.blog ? '−' : '+'}
+              </span>
+            </h4>
+            <ul className={`footer__list ${expandedSections.blog ? 'footer__list--open' : ''}`}>
               {blogPosts.map((post) => (
                 <li key={post}>
                   <a href="#" className="footer__link">
@@ -99,8 +145,13 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="footer__col">
-            <h4 className="footer__heading">Get in Touch</h4>
-            <ul className="footer__contact">
+            <h4 className="footer__heading" onClick={() => toggleSection('touch')}>
+              Get in Touch
+              <span className="footer__accordion-toggle">
+                {expandedSections.touch ? '−' : '+'}
+              </span>
+            </h4>
+            <ul className={`footer__contact ${expandedSections.touch ? 'footer__list--open' : ''}`}>
               <li>
                 <FiPhone className="footer__contact-icon" />
                 <div>
@@ -139,6 +190,13 @@ export default function Footer() {
           </p>
         </div>
       </div>
+      
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button className="back-to-top" onClick={scrollToTop} aria-label="Back to top">
+          <FiChevronUp size={20} />
+        </button>
+      )}
     </footer>
   )
 }

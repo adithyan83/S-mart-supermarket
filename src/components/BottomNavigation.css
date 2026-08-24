@@ -1,0 +1,76 @@
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #0b0d0b;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+  padding: 0 10px;
+}
+
+.bottom-nav__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #8a8d8a;
+  text-decoration: none;
+  font-family: var(--font-primary);
+  font-size: 0.7rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  flex: 1;
+  height: 100%;
+  gap: 3px;
+}
+
+.bottom-nav__item--active {
+  color: #3db843;
+}
+
+.bottom-nav__icon {
+  transition: transform 0.2s ease;
+}
+
+.bottom-nav__item--active .bottom-nav__icon {
+  transform: translateY(-2px);
+}
+
+.bottom-nav__icon-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.bottom-nav__badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: #3db843;
+  color: #ffffff;
+  font-size: 0.6rem;
+  font-weight: 800;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #0b0d0b;
+}
+
+/* Responsive Visibility */
+@media (max-width: 768px) {
+  .bottom-nav {
+    display: flex;
+  }
+  
+  /* Add padding to the body so content doesn't get hidden behind the sticky bottom navigation */
+  body {
+    padding-bottom: 60px;
+  }
+}

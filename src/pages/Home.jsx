@@ -1,19 +1,15 @@
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import {
-  FiShoppingBag, FiStar, FiAward, FiUsers, FiTruck, FiCheckCircle,
-  FiArrowRight, FiMapPin, FiShield
+  FiShoppingBag, FiStar, FiAward, FiTruck, FiArrowRight, FiMapPin, FiShield,
+  FiChevronRight, FiCheckCircle
 } from 'react-icons/fi'
 import {
   MdOutlineLocalGroceryStore, MdOutlineEco, MdOutlineLocalDrink,
-  MdOutlineLunchDining, MdOutlineAcUnit, MdOutlineDirectionsWalk,
-  MdOutlineSpa, MdOutlineCheckroom, MdOutlineCleaningServices,
-  MdOutlineKitchen, MdOutlineMovie, MdOutlineMenuBook,
-  MdOutlineToys, MdOutlineCardGiftcard, MdOutlineLocalFireDepartment,
-  MdOutlineDashboard, MdOutlineFavorite
+  MdOutlineLunchDining, MdOutlineAcUnit, MdOutlineFavorite
 } from 'react-icons/md'
 import AnimatedSection from '../components/AnimatedSection'
-import IsoLogo from '../components/IsoLogo'
 import heroBanner from '../assets/hero_banner.png'
 import nestleLogo from '../assets/nestle.svg'
 import itcLogo from '../assets/itc.svg'
@@ -23,64 +19,43 @@ import parleLogo from '../assets/parle.svg'
 import pepsicoLogo from '../assets/pepsico.svg'
 import './Home.css'
 
+const brands = [
+  { label: 'Nestle', logo: nestleLogo },
+  { label: 'ITC', logo: itcLogo },
+  { label: 'Dabur', logo: daburLogo },
+  { label: 'Eastern', logo: easternLogo },
+  { label: 'Parle', logo: parleLogo },
+  { label: 'Pepsico', logo: pepsicoLogo },
+]
+
 /* ── Data ─────────────────────────────────────────── */
 const categories = [
-  { icon: <MdOutlineLocalGroceryStore />, label: 'Grocery', color: '#22c55e' },
-  { icon: <MdOutlineEco />, label: 'Organic Vegetables', color: '#16a34a' },
-  { icon: <MdOutlineFavorite />, label: 'Organic Fruits', color: '#f97316' },
-  { icon: <MdOutlineLocalDrink />, label: 'Beverages', color: '#3b82f6' },
-  { icon: <MdOutlineLunchDining />, label: 'Diary Products', color: '#a855f7' },
-  { icon: <MdOutlineAcUnit />, label: 'Frozen Foods', color: '#06b6d4' },
-  { icon: <MdOutlineDirectionsWalk />, label: 'Footwares', color: '#8b5cf6' },
-  { icon: <MdOutlineSpa />, label: 'Cosmetics', color: '#ec4899' },
-  { icon: <MdOutlineCheckroom />, label: 'Fashion Accessory', color: '#f59e0b' },
-  { icon: <MdOutlineCleaningServices />, label: 'Personal Care', color: '#10b981' },
-  { icon: <MdOutlineKitchen />, label: 'Home Care', color: '#6366f1' },
-  { icon: <MdOutlineDashboard />, label: 'Household Utensils', color: '#64748b' },
-  { icon: <MdOutlineMovie />, label: 'Movie CDs', color: '#ef4444' },
-  { icon: <MdOutlineMenuBook />, label: 'Stationery', color: '#0ea5e9' },
-  { icon: <MdOutlineMenuBook />, label: 'Books & Magazines', color: '#78716c' },
-  { icon: <MdOutlineToys />, label: 'Toys', color: '#f97316' },
-  { icon: <MdOutlineCardGiftcard />, label: 'Gift Items', color: '#e11d48' },
-  { icon: <MdOutlineLocalFireDepartment />, label: 'LPG Connection', color: '#dc2626' },
+  { icon: <MdOutlineLocalGroceryStore />, label: 'Grocery', color: '#22c55e', bg: '#f0fdf4' },
+  { icon: <MdOutlineEco />, label: 'Fresh Produce', color: '#16a34a', bg: '#f0fdf4' },
+  { icon: <MdOutlineFavorite />, label: 'Personal Care', color: '#f97316', bg: '#fff7ed' },
+  { icon: <MdOutlineLocalDrink />, label: 'Beverages', color: '#3b82f6', bg: '#eff6ff' },
+  { icon: <MdOutlineLunchDining />, label: 'Dairy Products', color: '#a855f7', bg: '#f3e8ff' },
+  { icon: <MdOutlineAcUnit />, label: 'Frozen Foods', color: '#06b6d4', bg: '#ecfeff' },
 ]
 
 const whyChoose = [
   {
     icon: <FiCheckCircle />,
     title: 'Quality Products',
-    desc: 'S-mart is backed with superior vendors to ensure product quality and on time delivery. We supply good quality products from more than hundred FMCG companies at an affordable rates.',
+    desc: 'Sourced from 100+ trusted FMCG companies.',
     accent: '#22c55e',
   },
   {
     icon: <FiStar />,
     title: 'Affordable Rates',
-    desc: 'We have more than 70 years of experience in FMCG sector, so we can offer products at relatively low prices by using our buying power to buy goods from manufacturers at lower prices.',
+    desc: 'Best quality products at lowest market prices.',
     accent: '#f5a623',
   },
   {
     icon: <FiTruck />,
     title: 'Ample Car Parking',
-    desc: 'Parking plays a major role in a customer\'s decision of where to shop. A relaxing shopping experience begins with convenient car parking. We make it simple and easy for our customers.',
+    desc: 'Spacious parking for a relaxed shopping experience.',
     accent: '#3b82f6',
-  },
-  {
-    icon: <FiAward />,
-    title: 'Industry Leader',
-    desc: 'We are celebrating 70 years of being in retail business. We\'re proud to say that we are one of the leaders in today\'s Industry. We celebrate this part of our history.',
-    accent: '#a855f7',
-  },
-  {
-    icon: <FiUsers />,
-    title: 'Experienced Staffs',
-    desc: 'Highly trained staff and professionals have been appointed to take care of all the needs of customers. We provide a 100% satisfaction guarantee on every purchase.',
-    accent: '#10b981',
-  },
-  {
-    icon: <IsoLogo />,
-    title: 'ISO Certified',
-    desc: 'We are the first ISO certified Supermarket in Anchal city. This internationally recognised standard ensures services meet the needs of clients through an effective quality management system.',
-    accent: '#3db843',
   },
 ]
 
@@ -97,15 +72,12 @@ const testimonials = [
     role: 'Customer',
     avatar: 'RS',
   },
-]
-
-const brands = [
-  { label: 'Nestle' },
-  { label: 'ITC' },
-  { label: 'Dabur' },
-  { label: 'Eastern' },
-  { label: 'Parle' },
-  { label: 'Pepsico' },
+  {
+    text: '"One of the best supermarkets in Kollam district. Clean environment, courteous staff, and very fast checkout experience."',
+    name: 'Suresh K.',
+    role: 'Customer',
+    avatar: 'SK',
+  }
 ]
 
 const stats = [
@@ -124,6 +96,16 @@ const pageVariants = {
 
 /* ── Component ───────────────────────────────────── */
 export default function Home() {
+  const [activeTestimonial, setActiveTestimonial] = useState(0)
+
+  // Auto-slide testimonials
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveTestimonial((prev) => (prev + 1) % testimonials.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <motion.div
       className="page-wrapper"
@@ -205,27 +187,39 @@ export default function Home() {
       {/* ── Shop By Category ─────────────── */}
       <section className="section categories-section">
         <div className="container">
-          <AnimatedSection className="section-header">
-            <span className="section-label">Browse</span>
-            <h2 className="section-title">Shop By Category</h2>
-            <div className="divider" />
-            <p className="section-subtitle">
-              Everything you need under one roof — from fresh produce to household essentials.
-            </p>
-          </AnimatedSection>
+          <div className="categories-header-compact">
+            <h2 className="categories-title-compact">Shop By Category</h2>
+            <Link to="/products" className="view-all-link">View all</Link>
+          </div>
 
-          <div className="categories-grid">
+          <div className="categories-grid-mobile">
             {categories.map((cat, i) => (
               <AnimatedSection key={cat.label} variant="scaleIn" delay={i * 0.04}>
-                <Link to="/products" className="cat-card">
-                  <div className="cat-card__icon" style={{ '--cat-color': cat.color }}>
+                <Link to="/products" className="cat-card-mobile" style={{ '--cat-bg': cat.bg }}>
+                  <div className="cat-card-mobile__icon" style={{ '--cat-color': cat.color }}>
                     {cat.icon}
                   </div>
-                  <span className="cat-card__label">{cat.label}</span>
+                  <span className="cat-card-mobile__label">{cat.label}</span>
                 </Link>
               </AnimatedSection>
             ))}
           </div>
+
+          {/* Can't find what you're looking for? Help Banner */}
+          <AnimatedSection variant="scaleIn">
+            <Link to="/contact" className="help-banner-mobile">
+              <div className="help-banner-mobile__content">
+                <div className="help-banner-mobile__icon">
+                  <FiTruck size={20} />
+                </div>
+                <div className="help-banner-mobile__text">
+                  <h4 className="help-banner-mobile__title">Can't find what you're looking for?</h4>
+                  <p className="help-banner-mobile__subtitle">We're here to help you find the perfect product.</p>
+                </div>
+              </div>
+              <FiChevronRight className="help-banner-mobile__arrow" size={20} />
+            </Link>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -236,20 +230,19 @@ export default function Home() {
             <span className="section-label">Our Promise</span>
             <h2 className="section-title">Why Choose S-MART?</h2>
             <div className="divider" />
-            <p className="section-subtitle">
-              Delivering quality and value to Anchal for over 70 years.
-            </p>
           </AnimatedSection>
 
-          <div className="why-grid">
+          <div className="why-grid-mobile">
             {whyChoose.map((item, i) => (
               <AnimatedSection key={item.title} variant="fadeUp" delay={i * 0.08}>
-                <div className="why-card glass-card">
-                  <div className="why-card__icon" style={{ '--why-color': item.accent }}>
+                <div className="why-card-mobile">
+                  <div className="why-card-mobile__icon" style={{ '--why-color': item.accent }}>
                     {item.icon}
                   </div>
-                  <h3 className="why-card__title">{item.title}</h3>
-                  <p className="why-card__desc">{item.desc}</p>
+                  <div className="why-card-mobile__info">
+                    <h3 className="why-card-mobile__title">{item.title}</h3>
+                    <p className="why-card-mobile__desc">{item.desc}</p>
+                  </div>
                 </div>
               </AnimatedSection>
             ))}
@@ -260,35 +253,60 @@ export default function Home() {
       {/* ── Testimonials ─────────────────── */}
       <section className="section testimonials-section">
         <div className="container">
-          <AnimatedSection className="section-header">
-            <span className="section-label">What Customers Say</span>
-            <h2 className="section-title">Customer Testimonials</h2>
-            <div className="divider" />
-          </AnimatedSection>
+          <div className="categories-header-compact">
+            <h2 className="categories-title-compact">What Customers Say</h2>
+            <Link to="/contact" className="view-all-link">View all</Link>
+          </div>
 
-          <div className="testimonials-grid">
-            {testimonials.map((t, i) => (
-              <AnimatedSection key={t.name} variant={i % 2 === 0 ? 'slideLeft' : 'slideRight'} delay={i * 0.15}>
-                <div className="testimonial-card glass-card">
-                  <div className="testimonial-card__stars">
-                    {[...Array(5)].map((_, si) => (
-                      <FiStar key={si} fill="#f5a623" color="#f5a623" size={16} />
-                    ))}
+          <div className="testimonial-slider-container">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTestimonial}
+                className="testimonial-card-mobile"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="testimonial-card-mobile__stars">
+                  {[...Array(5)].map((_, si) => (
+                    <FiStar key={si} fill="#16a34a" color="#16a34a" size={16} />
+                  ))}
+                </div>
+                <p className="testimonial-card-mobile__text">
+                  {testimonials[activeTestimonial].text}
+                </p>
+                <div className="testimonial-card-mobile__author">
+                  <div className="testimonial-card-mobile__avatar">
+                    {testimonials[activeTestimonial].avatar}
                   </div>
-                  <p className="testimonial-card__text">{t.text}</p>
-                  <div className="testimonial-card__author">
-                    <div className="testimonial-card__avatar">{t.avatar}</div>
-                    <div>
-                      <div className="testimonial-card__name">{t.name}</div>
-                      <div className="testimonial-card__role">{t.role}</div>
+                  <div>
+                    <div className="testimonial-card-mobile__name">
+                      {testimonials[activeTestimonial].name}
+                    </div>
+                    <div className="testimonial-card-mobile__role">
+                      {testimonials[activeTestimonial].role}
                     </div>
                   </div>
                 </div>
-              </AnimatedSection>
-            ))}
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Slider Dots */}
+            <div className="testimonial-slider-dots">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  className={`testimonial-slider-dot ${activeTestimonial === index ? 'testimonial-slider-dot--active' : ''}`}
+                  onClick={() => setActiveTestimonial(index)}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
+
       {/* ── Popular Brands ───────────────── */}
       <section className="section-sm brands-section">
         <div className="container">
@@ -302,23 +320,15 @@ export default function Home() {
             <div className="brands-track-wrapper">
               <div className="brands-track">
                 {[...brands, ...brands].map((brand, i) => {
-                  const logoMap = { Nestle: nestleLogo, ITC: itcLogo, Dabur: daburLogo, Eastern: easternLogo, Parle: parleLogo, Pepsico: pepsicoLogo }
-                  const logoSrc = logoMap[brand.label]
-                  // Per-logo size tweaks to visually normalise shapes
-                  const sizeMap = {
-                    ITC: { width: '150px', height: '90px' },
-                    Nestle: { width: '120px', height: '70px' },
-                    Dabur: { width: '120px', height: '70px' },
-                    Eastern: { width: '120px', height: '70px' },
-                    Parle: { width: '120px', height: '70px' },
-                    Pepsico: { width: '120px', height: '70px' },
+                  const imgStyle = {
+                    width: brand.label === 'ITC' ? '150px' : '120px',
+                    height: brand.label === 'ITC' ? '90px' : '70px',
                   }
-                  const imgStyle = sizeMap[brand.label] || {}
                   return (
                     <div key={`${brand.label}-${i}`} className="brand-item" data-brand={brand.label}>
-                      {logoSrc ? (
+                      {brand.logo ? (
                         <img
-                          src={logoSrc}
+                          src={brand.logo}
                           alt={brand.label}
                           className="brand-item__logo"
                           style={imgStyle}

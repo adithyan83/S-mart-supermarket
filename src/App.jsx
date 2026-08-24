@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import BottomNavigation from './components/BottomNavigation'
 import Home from './pages/Home'
 import About from './pages/About'
 import Products from './pages/Products'
@@ -29,6 +30,7 @@ function App() {
       <Navbar />
       <AnimatedRoutes />
       <Footer />
+      <BottomNavigation />
     </BrowserRouter>
   )
 }
