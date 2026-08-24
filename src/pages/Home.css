@@ -154,6 +154,18 @@
   flex-wrap: wrap;
 }
 
+.hero__cta-group .btn-outline {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.hero__cta-group .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+  color: #ffffff !important;
+}
+
+
 .hero__scroll {
   position: absolute;
   bottom: 2.5rem;

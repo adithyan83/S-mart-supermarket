@@ -165,7 +165,7 @@ export default function Home() {
 
             <div className="hero__cta-group">
               <Link to="/products" className="btn btn-primary">
-                <FiShoppingBag /> Shop Now
+                <FiShoppingBag /> Explore Products
               </Link>
               <Link to="/offers" className="btn btn-outline">
                 View Deals <FiArrowRight />

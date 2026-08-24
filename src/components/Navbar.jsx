@@ -86,11 +86,11 @@ export default function Navbar() {
               ))}
             </ul>
 
-            {/* Desktop CTA Button */}
             <div className="navbar__actions">
               <Link to="/offers" className="btn btn-primary navbar__cta">
                 <FiTag />
-                Today's Deals
+                <span className="navbar__cta-desktop">Today's Deals</span>
+                <span className="navbar__cta-mobile">Deals</span>
               </Link>
             </div>
 
