@@ -81,7 +81,7 @@ const testimonials = [
 ]
 
 const stats = [
-  { val: '70+', label: 'Years Experience', icon: <FiShield /> },
+  { val: '70+', label: 'Years Retail Experience', icon: <FiShield /> },
   { val: '100+', label: 'FMCG Brands', icon: <MdOutlineEco /> },
   { val: 'ISO', label: 'Certified', icon: <FiAward /> },
   { val: '1st', label: 'In Anchal', icon: <FiAward /> }

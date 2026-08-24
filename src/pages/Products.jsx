@@ -209,26 +209,6 @@ const products = [
   }
 ]
 
-const testimonials = [
-  {
-    text: '"I am quite happy with s-mart they supply quality products at affordable rates"',
-    name: 'Anjali R.',
-    role: 'Customer',
-    avatar: 'AR',
-  },
-  {
-    text: '"Excellent customer service. It is a nice and refreshing to be greeted with a smile. Everything is available at reasonable prices!"',
-    name: 'Rahul S.',
-    role: 'Customer',
-    avatar: 'RS',
-  },
-  {
-    text: '"One of the best supermarkets in Kollam district. Clean environment, courteous staff, and very fast checkout experience."',
-    name: 'Suresh K.',
-    role: 'Customer',
-    avatar: 'SK',
-  }
-]
 
 const brands = [
   { label: 'Nestle', logo: nestleLogo },
@@ -239,14 +219,6 @@ const brands = [
   { label: 'Pepsico', logo: pepsicoLogo },
 ]
 
-const mobileMainCategories = [
-  { name: 'Grocery', image: groceryImg, searchCat: 'Daily Essentials' },
-  { name: 'Fresh Produce', image: vegImg, searchCat: 'Fresh Produce' },
-  { name: 'Personal Care', image: personalCareImg, searchCat: 'Health & Care' },
-  { name: 'Beverages', image: bevImg, searchCat: 'Drinks' },
-  { name: 'Dairy Products', image: dairyImg, searchCat: 'Dairy' },
-  { name: 'Frozen Foods', image: frozenImg, searchCat: 'Frozen' },
-]
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -262,29 +234,15 @@ export default function Products() {
   
   const [activeCategory, setActiveCategory] = useState(ALL)
   const [search, setSearch] = useState('')
-  const [showFullSearch, setShowFullSearch] = useState(false)
-  const [activeTestimonial, setActiveTestimonial] = useState(1) // Start with Rahul S. (index 1)
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
-
-  // Listen to window size
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768)
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
-
   // Listen to search focus query param
   useEffect(() => {
     const params = new URLSearchParams(location.search)
     if (params.get('focus') === 'search') {
-      setShowFullSearch(true)
       setTimeout(() => {
         if (searchInputRef.current) {
           searchInputRef.current.focus()
         }
       }, 300)
-    } else {
-      setShowFullSearch(false)
     }
   }, [location.search])
 
@@ -293,140 +251,6 @@ export default function Products() {
     const matchSearch = p.name.toLowerCase().includes(search.toLowerCase())
     return matchCat && matchSearch
   })
-
-  const selectCategoryFromMobileGrid = (catName, searchCat) => {
-    setActiveCategory(searchCat)
-    setShowFullSearch(true)
-  }
-
-  // Mobile Mockup layout (Right Mockup)
-  if (isMobile && !showFullSearch) {
-    return (
-      <motion.div
-        className="page-wrapper"
-        variants={pageVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-      >
-        <div className="container mobile-categories-container">
-          
-          {/* Shop By Category Section (Photos) */}
-          <section className="mobile-section">
-            <div className="mobile-section-header">
-              <h2 className="mobile-section-title">Shop By Category</h2>
-              <button onClick={() => setShowFullSearch(true)} className="mobile-view-all">View all</button>
-            </div>
-            
-            <div className="mobile-category-photo-grid">
-              {mobileMainCategories.map((cat) => (
-                <div
-                  key={cat.name}
-                  className="mobile-photo-card"
-                  onClick={() => selectCategoryFromMobileGrid(cat.name, cat.searchCat)}
-                >
-                  <div className="mobile-photo-card__img-wrapper">
-                    <img src={cat.image} alt={cat.name} className="mobile-photo-card__img" />
-                  </div>
-                  <span className="mobile-photo-card__label">{cat.name}</span>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Weekend Sale Banner */}
-          <section className="mobile-section">
-            <div className="weekend-sale-banner" onClick={() => selectCategoryFromMobileGrid('Grocery', 'Daily Essentials')}>
-              <div className="weekend-sale-banner__content">
-                <span className="weekend-sale-banner__tag">WEEKEND SALE</span>
-                <h3 className="weekend-sale-banner__title">Up to 20% Off</h3>
-                <p className="weekend-sale-banner__subtitle">On Grocery & Staples</p>
-                <button className="weekend-sale-banner__btn">Shop Now</button>
-              </div>
-              <img src={groceryImg} alt="Grocery Basket" className="weekend-sale-banner__img" />
-            </div>
-          </section>
-
-          {/* Quality You Can Trust Banner */}
-          <section className="mobile-section">
-            <Link to="/about" className="quality-badge-banner">
-              <div className="quality-badge-banner__left">
-                <div className="quality-badge-banner__icon">
-                  <FiAward size={22} />
-                </div>
-                <div className="quality-badge-banner__text">
-                  <h4 className="quality-badge-banner__title">Quality You Can Trust</h4>
-                  <p className="quality-badge-banner__subtitle">Serving quality products for over 70 years.</p>
-                </div>
-              </div>
-              <FiChevronRight className="quality-badge-banner__arrow" size={20} />
-            </Link>
-          </section>
-
-          {/* Customer Testimonials */}
-          <section className="mobile-section">
-            <div className="mobile-section-header">
-              <h2 className="mobile-section-title">Customer Testimonials</h2>
-              <Link to="/contact" className="mobile-view-all">View all</Link>
-            </div>
-            
-            <div className="mobile-testimonial-carousel">
-              <button
-                className="carousel-arrow carousel-arrow--left"
-                onClick={() => setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
-                aria-label="Previous testimonial"
-              >
-                <FiChevronLeft size={20} />
-              </button>
-              
-              <div className="mobile-testimonial-card">
-                <div className="mobile-testimonial-card__stars">
-                  {[...Array(5)].map((_, si) => (
-                    <FiStar key={si} fill="#16a34a" color="#16a34a" size={14} />
-                  ))}
-                </div>
-                <p className="mobile-testimonial-card__text">
-                  {testimonials[activeTestimonial].text}
-                </p>
-                <div className="mobile-testimonial-card__author">
-                  <div className="mobile-testimonial-card__avatar">
-                    {testimonials[activeTestimonial].avatar}
-                  </div>
-                  <div>
-                    <h4 className="mobile-testimonial-card__name">{testimonials[activeTestimonial].name}</h4>
-                    <span className="mobile-testimonial-card__role">{testimonials[activeTestimonial].role}</span>
-                  </div>
-                </div>
-              </div>
-
-              <button
-                className="carousel-arrow carousel-arrow--right"
-                onClick={() => setActiveTestimonial((prev) => (prev + 1) % testimonials.length)}
-                aria-label="Next testimonial"
-              >
-                <FiChevronRight size={20} />
-              </button>
-            </div>
-
-            {/* Dots */}
-            <div className="mobile-testimonial-dots">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  className={`mobile-testimonial-dot ${activeTestimonial === index ? 'mobile-testimonial-dot--active' : ''}`}
-                  onClick={() => setActiveTestimonial(index)}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
-          </section>
-
-
-
-        </div>
-      </motion.div>
-    )
-  }
 
   // Original list/search layout
   return (
@@ -462,15 +286,7 @@ export default function Products() {
                 {cat}
               </button>
             ))}
-            {isMobile && (
-              <button
-                onClick={() => setShowFullSearch(false)}
-                className="filter-btn filter-btn-back"
-                style={{ backgroundColor: '#f0fdf4', color: '#16a34a', borderColor: '#dcfce7' }}
-              >
-                ← Back
-              </button>
-            )}
+
           </div>
         </AnimatedSection>
 

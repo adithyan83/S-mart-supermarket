@@ -115,7 +115,7 @@ export default function About() {
       <section className="about-stats-section">
         <div className="container">
           <div className="about-stats-grid">
-            <CounterStat target="70+" label="Years of Experience" />
+            <CounterStat target="70+" label="Years of Retail Experience" />
             <CounterStat target="100+" label="FMCG Brands" />
             <CounterStat target="1st" label="ISO Certified in Anchal" />
             <CounterStat target="1000+" label="Happy Customers Daily" />
