@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { FiPhone, FiMail, FiMapPin, FiSend, FiCheckCircle } from 'react-icons/fi'
+import { FiPhone, FiMail, FiMapPin, FiSend, FiCheckCircle, FiArrowRight } from 'react-icons/fi'
 import AnimatedSection from '../components/AnimatedSection'
 import './Contact.css'
 
@@ -29,7 +29,7 @@ const contactInfo = [
     icon: <FiMapPin />,
     title: 'Location',
     lines: ['Samkarathil Trading Company Pvt Ltd', 'R.O Junction, Anchal,', 'Kollam, Kerala – 691306'],
-    href: 'https://maps.google.com/?q=Anchal+Kollam+Kerala',
+    href: 'https://maps.app.goo.gl/qqVjEYvM1NtsgZr36',
     color: '#f5a623',
   },
 ]
@@ -211,7 +211,7 @@ export default function Contact() {
                 <div className="contact-map-embed">
                   <iframe
                     title="S-MART Location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3937.8574693254483!2d76.9218!3d8.9893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05e59e00000001%3A0x12345!2sAnchal%2C+Kollam%2C+Kerala!5e0!3m2!1sen!2sin!4v1234567890"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3941.4830788839804!2d76.9138975!3d8.927553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b061227b89f1471%3A0x28876e55afab3724!2sS%20Mart%20Supermarket!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                     width="100%"
                     height="300"
                     style={{ border: 0 }}
@@ -234,6 +234,9 @@ export default function Contact() {
                     <span>samkarathil@gmail.com</span>
                   </div>
                 </div>
+                <a href="https://maps.app.goo.gl/qqVjEYvM1NtsgZr36" target="_blank" rel="noreferrer" className="btn btn-accent">
+                  Get Directions <FiArrowRight />
+                </a>
                 <div className="contact-hours">
                   <h4>Store Hours</h4>
                   <div className="contact-hours__row">
