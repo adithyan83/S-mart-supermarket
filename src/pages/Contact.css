@@ -1,9 +1,13 @@
-/* Contact Page */
 .contact-info-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
   margin-bottom: var(--space-2xl);
+}
+
+.contact-info-grid > * {
+  display: flex;
+  height: 100%;
 }
 
 .contact-info-card {
@@ -13,6 +17,9 @@
   padding: var(--space-xl);
   text-decoration: none;
   transition: all var(--transition-med);
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .contact-info-card:hover {
