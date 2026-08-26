@@ -8,7 +8,7 @@ import {
 } from 'react-icons/md'
 import AnimatedSection from '../components/AnimatedSection'
 import heroBanner from '../assets/hero_banner.png'
-import weekendSaverBanner from '../assets/weekend_saver_banner.png'
+import newOfferBanner from '../assets/newoffer.png'
 import groceryImg from '../assets/grocery_card.png'
 import fruitsImg from '../assets/fruits_card.png'
 import beveragesImg from '../assets/beverages_card.png'
@@ -68,6 +68,9 @@ export default function Offers() {
               <div className="stat-pill">
                 <FiClock className="icon" /> <strong>Updated Weekly</strong>
               </div>
+              <div className="stat-pill">
+                <FiCalendar className="icon" /> <strong>Valid till 31 AUG 2026</strong>
+              </div>
             </div>
           </div>
           <div className="offers-premium-hero__image-panel">
@@ -90,12 +93,15 @@ export default function Offers() {
         <div className="container">
           <AnimatedSection variant="fadeUp">
             <div className="saver-showcase__card">
-              <Link to="/products" className="saver-showcase__link">
+              <Link to="/products" className="saver-showcase__link" style={{ position: 'relative' }}>
                 <img
-                  src={weekendSaverBanner}
+                  src={newOfferBanner}
                   alt="Weekend Super Saver Banner"
                   className="saver-showcase__img"
                 />
+                <div className="saver-showcase__badge">
+                  <FiCalendar className="icon" /> Valid till 31 AUG 2026
+                </div>
               </Link>
             </div>
           </AnimatedSection>
@@ -147,7 +153,7 @@ export default function Offers() {
 
                     <div className="deal-premium-card__footer">
                       <span className="validity">
-                        <FiCalendar className="icon" /> Valid till 25 May 2025
+                        <FiCalendar className="icon" /> Valid till 31 AUG 2026
                       </span>
                       <Link to="/products" className="details-link">
                         View details <FiArrowRight className="arrow" />

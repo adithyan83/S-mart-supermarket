@@ -1,4 +1,4 @@
-﻿/* ===================================================
+/* ===================================================
    S-MART Supermarket â€” Premium Offers Design
    =================================================== */
 
@@ -203,6 +203,43 @@
   display: block;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
+}
+
+.saver-showcase__badge {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  background: rgba(14, 39, 18, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+
+.saver-showcase__badge .icon {
+  color: var(--clr-accent-gold);
+  font-size: 1rem;
+}
+
+@media (max-width: 500px) {
+  .saver-showcase__badge {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.72rem;
+  }
+  .saver-showcase__badge .icon {
+    font-size: 0.85rem;
+  }
 }
 
 
