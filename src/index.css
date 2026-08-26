@@ -60,10 +60,10 @@
   --shadow-glow: 0 0 25px rgba(61,184,67,0.22);
   --shadow-glow-accent: 0 0 25px rgba(61,184,67,0.18);
 
-  /* Transitions */
-  --transition-fast: 0.2s ease;
-  --transition-med: 0.35s ease;
-  --transition-slow: 0.5s ease;
+  /* Transitions — cubic-bezier for GPU-smooth animations */
+  --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-med: 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.48s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Nav height */
   --nav-height: 136px;
@@ -89,6 +89,8 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Prevent sub-pixel jitter on mobile */
+  text-rendering: optimizeSpeed;
 }
 
 img {
@@ -275,12 +277,43 @@ button {
     --space-2xl: 3.5rem;
     --space-3xl: 5rem;
     --nav-height: 116px;
+    /* Slightly faster transitions on mobile for snappier feel */
+    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-med: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .container { padding: 0 var(--space-sm); }
+
+  /* Promote commonly-animated elements to their own GPU layer */
+  .cat-card,
+  .cat-card-mobile,
+  .why-card,
+  .why-card-mobile,
+  .testimonial-card,
+  .deal-premium-card,
+  .btn,
+  .bottom-nav__item,
+  .navbar__link {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
 }
 
 @media (max-width: 480px) {
   .section-title { font-size: 1.6rem; }
+}
+
+/* --- Accessibility: Respect reduced-motion preference --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* --- Background Decorations --- */

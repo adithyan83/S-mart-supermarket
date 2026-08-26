@@ -7,9 +7,13 @@ import { motion, useInView } from 'framer-motion'
  * @param {number} delay - animation delay in seconds
  * @param {string} className - additional class names
  */
+
+// Detect mobile for reduced motion distances
+const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
+
 const variants = {
   fadeUp: {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: isMobile ? 24 : 50 },
     visible: { opacity: 1, y: 0 },
   },
   fadeIn: {
@@ -17,15 +21,15 @@ const variants = {
     visible: { opacity: 1 },
   },
   slideLeft: {
-    hidden: { opacity: 0, x: -60 },
+    hidden: { opacity: 0, x: isMobile ? -28 : -60 },
     visible: { opacity: 1, x: 0 },
   },
   slideRight: {
-    hidden: { opacity: 0, x: 60 },
+    hidden: { opacity: 0, x: isMobile ? 28 : 60 },
     visible: { opacity: 1, x: 0 },
   },
   scaleIn: {
-    hidden: { opacity: 0, scale: 0.85 },
+    hidden: { opacity: 0, scale: isMobile ? 0.92 : 0.85 },
     visible: { opacity: 1, scale: 1 },
   },
 }
@@ -45,6 +49,10 @@ export default function AnimatedSection({
 
   const MotionTag = motion[as] || motion.div
 
+  // On mobile, use shorter duration and snappier easing
+  const mobileDuration = isMobile ? Math.min(duration * 0.8, 0.45) : duration
+  const mobileDelay = isMobile ? delay * 0.6 : delay
+
   return (
     <MotionTag
       ref={ref}
@@ -53,9 +61,14 @@ export default function AnimatedSection({
       variants={variants[variant]}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
-      transition={{ duration, delay, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{
+        duration: mobileDuration,
+        delay: mobileDelay,
+        ease: [0.22, 1, 0.36, 1], // expo-out — very smooth on mobile
+      }}
     >
       {children}
     </MotionTag>
   )
 }
+
