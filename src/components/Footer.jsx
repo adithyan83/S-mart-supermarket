@@ -77,8 +77,8 @@ export default function Footer() {
               affordable prices, and 70+ years of retail experience.
             </p>
             <div className="footer__socials">
-              <a href="#" aria-label="Facebook" className="footer__social-icon"><FiFacebook /></a>
-              <a href="#" aria-label="Instagram" className="footer__social-icon"><FiInstagram /></a>
+              <a href="https://www.facebook.com/share/1Af4qmHfnM/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="footer__social-icon"><FiFacebook /></a>
+              <a href="https://www.instagram.com/s_mart__supermarket?igsi=OHl2aG4yaWd5OWxv" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="footer__social-icon"><FiInstagram /></a>
               <a href="https://wa.me/919349167973" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="footer__social-icon"><FaWhatsapp /></a>
               <a href="#" aria-label="Twitter" className="footer__social-icon"><FiTwitter /></a>
             </div>
