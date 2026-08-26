@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
 import {
   FiSearch, FiAward, FiHeart, FiTruck, FiArrowRight, FiPercent,
-  FiChevronLeft, FiChevronRight, FiCheckCircle, FiStar
+  FiChevronLeft, FiChevronRight, FiCheckCircle, FiStar, FiSliders
 } from 'react-icons/fi'
 import {
   MdOutlineLocalGroceryStore, MdOutlineEco, MdOutlineLocalDrink,
@@ -234,6 +234,18 @@ export default function Products() {
   
   const [activeCategory, setActiveCategory] = useState(ALL)
   const [search, setSearch] = useState('')
+  const [showFilters, setShowFilters] = useState(false)
+  const dropdownRef = useRef(null)
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowFilters(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
   // Listen to search focus query param
   useEffect(() => {
     const params = new URLSearchParams(location.search)
@@ -265,28 +277,54 @@ export default function Products() {
         
         {/* Minimalist Controls */}
         <AnimatedSection className="products-controls">
-          <div className="products-search">
-            <FiSearch className="products-search__icon" />
-            <input
-              ref={searchInputRef}
-              type="text"
-              placeholder="Search categories..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="products-search__input"
-            />
-          </div>
-          <div className="products-filters">
-            {allCategories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`filter-btn ${activeCategory === cat ? 'filter-btn--active' : ''}`}
+          <div className="products-search-bar-row">
+            <div className="products-search">
+              <FiSearch className="products-search__icon" />
+              <input
+                ref={searchInputRef}
+                type="text"
+                placeholder="Search categories..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="products-search__input"
+              />
+            </div>
+            
+            <div className="products-filter-wrapper" ref={dropdownRef}>
+              <button 
+                className={`products-filter-toggle ${showFilters ? 'products-filter-toggle--active' : ''} ${activeCategory !== ALL ? 'products-filter-toggle--has-filter' : ''}`}
+                onClick={() => setShowFilters(!showFilters)}
+                aria-label="Toggle category filters"
               >
-                {cat}
+                <FiSliders className="icon" />
+                <span>{activeCategory === ALL ? 'Filters' : activeCategory}</span>
               </button>
-            ))}
 
+              <AnimatePresence>
+                {showFilters && (
+                  <motion.div 
+                    className="products-filter-dropdown"
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.15, ease: 'easeOut' }}
+                  >
+                    {allCategories.map((cat) => (
+                      <button
+                        key={cat}
+                        onClick={() => {
+                          setActiveCategory(cat)
+                          setShowFilters(false)
+                        }}
+                        className={`dropdown-item ${activeCategory === cat ? 'dropdown-item--active' : ''}`}
+                      >
+                        {cat}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </AnimatedSection>
 

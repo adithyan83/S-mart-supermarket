@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiMenu, FiX, FiChevronDown, FiTag, FiMapPin, FiPhone, FiClock } from 'react-icons/fi'
+import { FiMenu, FiX, FiTag, FiMapPin, FiPhone, FiClock } from 'react-icons/fi'
 import Logo from '../assets/Logo.png' // supermarket text → white
 import './Navbar.css'
 
@@ -88,7 +88,6 @@ export default function Navbar() {
                     }
                   >
                     {link.label}
-                    {link.label === 'Products' && <FiChevronDown className="navbar__chevron" />}
                   </NavLink>
                 </li>
               ))}
@@ -151,7 +150,6 @@ export default function Navbar() {
                       onClick={handleNavClick}
                     >
                       {link.label}
-                      {link.label === 'Products' && <FiChevronDown className="navbar__chevron" />}
                     </NavLink>
                   </motion.li>
                 ))}

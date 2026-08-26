@@ -8,22 +8,20 @@ import './Footer.css'
 
 const popularCategories = [
   'Grocery',
-  'Organic Vegetables & Fruits',
-  'Beverages & Diary Products',
+  'Vegetables & Fruits',
+  'Beverages',
   'Frozen Foods',
-  'Personal & Home Care',
-  'Footwears, Toys & Gift Items',
-  'Cosmetics & Fashion Accessory',
-  'Book, Magazines & Stationery',
+  'Personal Care',
+  'Footwear & Toys',
+  'Cosmetics',
+  'Stationery',
 ]
 
 const quickLinks = [
   { to: '/about', label: 'About Us' },
-  { to: '/about', label: 'ISO Certification' },
   { to: '/products', label: 'Products' },
-  { to: '/contact', label: 'Privacy Policy' },
+  { to: '/offers', label: 'Offers' },
   { to: '/contact', label: 'Contact Us' },
-  { to: '/contact', label: 'Login' },
 ]
 
 const blogPosts = [
@@ -124,10 +122,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Blog Feeds */}
+          {/* Blog */}
           <div className="footer__col">
             <h4 className="footer__heading" onClick={() => toggleSection('blog')}>
-              Blog Feeds
+              Blog
               <span className="footer__accordion-toggle">
                 {expandedSections.blog ? '−' : '+'}
               </span>
@@ -185,7 +183,17 @@ export default function Footer() {
           <p className="footer__copy">
             Copyright © {new Date().getFullYear()} S-MART. All rights reserved.
           </p>
-
+          <p className="footer__powered">
+            Designed &amp; Developed by{' '}
+            <a
+              href="https://vawtechnologies.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer__powered-link"
+            >
+              VAW Technologies
+            </a>
+          </p>
         </div>
       </div>
       

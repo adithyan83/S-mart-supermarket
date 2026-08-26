@@ -31,7 +31,7 @@ const milestones = [
   { year: '2010', event: 'Expanded product range to 100+ FMCG brands' },
   { year: '2015', event: 'Achieved ISO certification – first in Anchal city' },
   { year: '2020', event: 'Introduced home-grown organic vegetables section' },
-  { year: '2024', event: 'Continuing to lead Kerala\'s retail industry with excellence' },
+  { year: '2026', event: 'Continuing to lead Kerala\'s retail industry with excellence' },
 ]
 
 const values = [

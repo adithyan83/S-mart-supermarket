@@ -2,15 +2,16 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import {
-  FiShoppingBag, FiStar, FiAward, FiTruck, FiArrowRight, FiMapPin, FiShield,
-  FiChevronRight, FiCheckCircle
+  FiShoppingBag, FiStar, FiAward, FiTruck, FiArrowRight, FiShield,
+  FiChevronRight, FiCheckCircle, FiUsers, FiTrendingUp, FiChevronDown
 } from 'react-icons/fi'
 import {
   MdOutlineLocalGroceryStore, MdOutlineEco, MdOutlineLocalDrink,
-  MdOutlineLunchDining, MdOutlineAcUnit, MdOutlineFavorite
+  MdOutlineLunchDining, MdOutlineAcUnit, MdOutlineFavorite, MdOutlineLocalOffer
 } from 'react-icons/md'
 import AnimatedSection from '../components/AnimatedSection'
 import heroBanner from '../assets/hero_banner.png'
+import dealsBanner from '../assets/deals_banner.png'
 import nestleLogo from '../assets/nestle.svg'
 import itcLogo from '../assets/itc.svg'
 import daburLogo from '../assets/dabur.svg'
@@ -57,6 +58,24 @@ const whyChoose = [
     desc: 'Spacious parking for a relaxed shopping experience.',
     accent: '#3b82f6',
   },
+  {
+    icon: <FiTrendingUp />,
+    title: 'Industry Leader',
+    desc: 'Celebrating 70 years of retail leadership.',
+    accent: '#e11d48',
+  },
+  {
+    icon: <FiUsers />,
+    title: 'Experienced Staffs',
+    desc: 'Highly trained staff ensuring 100% satisfaction.',
+    accent: '#7c3aed',
+  },
+  {
+    icon: <FiAward />,
+    title: 'ISO Certified',
+    desc: 'First ISO certified supermarket in Anchal city.',
+    accent: '#0284c7',
+  },
 ]
 
 const testimonials = [
@@ -81,7 +100,7 @@ const testimonials = [
 ]
 
 const stats = [
-  { val: '70+', label: 'Years Retail Experience', icon: <FiShield /> },
+  { val: '70+', label: 'Retail Experience', icon: <FiShield /> },
   { val: '100+', label: 'FMCG Brands', icon: <MdOutlineEco /> },
   { val: 'ISO', label: 'Certified', icon: <FiAward /> },
   { val: '1st', label: 'In Anchal', icon: <FiAward /> }
@@ -130,14 +149,6 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <motion.span
-              className="badge hero__badge"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-            >
-              <FiMapPin style={{ marginRight: '4px' }} /> Est. 2006 - Anchal, Kerala
-            </motion.span>
 
             <h1 className="hero__title">
               Welcome to <span style={{ display: 'inline-block' }}><span className="gradient-text">S-MART</span> Supermarket</span>
@@ -148,17 +159,7 @@ export default function Home() {
               Quality beyond question, convenience that adds something great to your day.
             </p>
 
-            <div className="hero__stats">
-              {stats.map((item) => (
-                <div key={item.label} className="hero__stat">
-                  <div className="hero__stat-icon">{item.icon}</div>
-                  <div className="hero__stat-info">
-                    <span className="hero__stat-val">{item.val}</span>
-                    <span className="hero__stat-label">{item.label}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+
 
             <div className="hero__cta-group">
               <Link to="/products" className="btn btn-primary">
@@ -178,7 +179,31 @@ export default function Home() {
           transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
         >
           <div className="hero__scroll-dot" />
+          <FiChevronDown className="hero__scroll-arrow" />
         </motion.div>
+      </section>
+
+      {/* ── Stats Strip ──────────────────── */}
+      <section className="stats-strip">
+        <div className="container stats-strip__inner">
+          {stats.map((item, i) => (
+            <motion.div
+              key={item.label}
+              className="stats-strip__item"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+            >
+              <div className="stats-strip__icon">{item.icon}</div>
+              <div className="stats-strip__info">
+                <span className="stats-strip__val">{item.val}</span>
+                <span className="stats-strip__label">{item.label}</span>
+              </div>
+              {i < stats.length - 1 && <div className="stats-strip__divider" />}
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       {/* ── Shop By Category ─────────────── */}
@@ -215,6 +240,36 @@ export default function Home() {
                 </div>
               </div>
               <FiChevronRight className="help-banner-mobile__arrow" size={20} />
+            </Link>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ── Offers Banner ─────────────────── */}
+      <section className="home-offers-banner">
+        <div className="container">
+          <AnimatedSection variant="fadeUp">
+            <Link to="/offers" className="home-offers-banner__wrap">
+              <img
+                src={dealsBanner}
+                alt="Weekly Deals – Fresh Organic Vegetables & Fruits"
+                className="home-offers-banner__img"
+              />
+              <div className="home-offers-banner__overlay">
+                <span className="home-offers-banner__label">
+                  <MdOutlineLocalOffer /> Limited Time
+                </span>
+                <h2 className="home-offers-banner__title">
+                  Up to <span className="gradient-text">40% Off</span><br />
+                  Fresh Organic Produce
+                </h2>
+                <p className="home-offers-banner__sub">
+                  Weekly deals on vegetables, fruits &amp; groceries. Don't miss out!
+                </p>
+                <span className="home-offers-banner__cta btn btn-primary">
+                  View All Offers <FiArrowRight />
+                </span>
+              </div>
             </Link>
           </AnimatedSection>
         </div>
