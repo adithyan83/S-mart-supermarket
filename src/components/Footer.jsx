@@ -180,22 +180,31 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="footer__bottom">
         <div className="container footer__bottom-inner">
-          <p className="footer__copy">
-            Copyright © {new Date().getFullYear()} S-MART. All rights reserved.
-          </p>
-          <p className="footer__powered">
-            Designed &amp; Developed by{' '}
-            <a
-              href="https://vawtechnologies.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer__powered-link"
-            >
-              VAW Technologies
-            </a>
-          </p>
+          <div className="footer__bottom-meta">
+            <p className="footer__copy">
+              Copyright © {new Date().getFullYear()} S-MART. All rights reserved.
+            </p>
+            <span className="footer__bottom-divider">•</span>
+            <p className="footer__powered">
+              Designed &amp; Developed by{' '}
+              <a
+                href="https://vawtechnologies.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer__powered-link"
+              >
+                VAW Technologies
+              </a>
+            </p>
+          </div>
+          <div className="footer__bottom-links">
+            <Link to="/terms" className="footer__terms-link">
+              Terms &amp; Conditions
+            </Link>
+          </div>
         </div>
       </div>
+
       
       {/* Scroll to Top Button */}
       {showScrollTop && (

@@ -9,6 +9,7 @@ import About from './pages/About'
 import Products from './pages/Products'
 import Offers from './pages/Offers'
 import Contact from './pages/Contact'
+import TermsAndConditions from './pages/TermsAndConditions'
 
 /* Scroll to top on every route change — works on desktop + mobile Safari */
 function ScrollToTop() {
@@ -38,6 +39,7 @@ function AnimatedRoutes() {
         <Route path="/products" element={<Products />} />
         <Route path="/offers" element={<Offers />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
       </Routes>
     </AnimatePresence>
   )

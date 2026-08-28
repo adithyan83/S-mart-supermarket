@@ -1,0 +1,168 @@
+/* ── Terms & Conditions Page ────────────────────────────────── */
+
+/* Hero badge */
+.terms-hero__badge {
+  display: inline-block;
+  background: rgba(26, 122, 60, 0.2);
+  color: var(--clr-primary);
+  border: 1px solid rgba(26, 122, 60, 0.4);
+  border-radius: 50px;
+  padding: 0.3rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.terms-hero__date {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+}
+
+/* ── Body Layout ─────────────────────────────────────────────── */
+.terms-body {
+  padding: 5rem 0 6rem;
+  background: var(--clr-bg);
+}
+
+.terms-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* ── Sidebar TOC ─────────────────────────────────────────────── */
+.terms-toc {
+  position: sticky;
+  top: calc(var(--nav-height) + 2rem);
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  max-height: calc(100vh - var(--nav-height) - 4rem);
+  overflow-y: auto;
+}
+
+.terms-toc__heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--clr-primary);
+  margin-bottom: 1rem;
+}
+
+.terms-toc__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.terms-toc__link {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--clr-text-muted);
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  line-height: 1.4;
+  transition: background 0.2s, color 0.2s;
+}
+
+.terms-toc__link:hover {
+  background: rgba(26, 122, 60, 0.1);
+  color: var(--clr-primary);
+}
+
+/* ── Intro Card ──────────────────────────────────────────────── */
+.terms-intro-card {
+  background: linear-gradient(135deg, rgba(26, 122, 60, 0.08) 0%, rgba(26, 122, 60, 0.04) 100%);
+  border: 1px solid rgba(26, 122, 60, 0.2);
+  border-left: 4px solid var(--clr-primary);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.terms-intro-card p {
+  color: var(--clr-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.terms-intro-card strong {
+  color: var(--clr-text);
+}
+
+/* ── Individual Sections ─────────────────────────────────────── */
+.terms-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.terms-section {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--clr-border);
+  scroll-margin-top: calc(var(--nav-height) + 2rem);
+}
+
+.terms-section:last-child {
+  border-bottom: none;
+}
+
+.terms-section__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--clr-text);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.terms-section__title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 1.2em;
+  background: var(--clr-primary);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.terms-section__body p {
+  color: var(--clr-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
+}
+
+.terms-section__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .terms-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .terms-toc {
+    position: static;
+    max-height: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .terms-body {
+    padding: 3rem 0 4rem;
+  }
+}
