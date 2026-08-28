@@ -190,7 +190,7 @@ export default function Footer() {
           <p className="footer__powered">
             Designed &amp; Developed by{' '}
             <a
-              href="https://vawtechnologies.com"
+              href="https://vawtech.in/"
               target="_blank"
               rel="noopener noreferrer"
               className="footer__powered-link"
