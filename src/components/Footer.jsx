@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {
-  FiPhone, FiMail, FiMapPin, FiInstagram, FiFacebook, FiTwitter, FiChevronUp
+  FiPhone, FiMail, FiMapPin, FiInstagram, FiFacebook, FiChevronUp
 } from 'react-icons/fi'
 import { FaWhatsapp } from 'react-icons/fa'
 import './Footer.css'
@@ -80,7 +80,6 @@ export default function Footer() {
               <a href="https://www.facebook.com/share/1Af4qmHfnM/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="footer__social-icon"><FiFacebook /></a>
               <a href="https://www.instagram.com/s_mart__supermarket?igsi=OHl2aG4yaWd5OWxv" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="footer__social-icon"><FiInstagram /></a>
               <a href="https://wa.me/919349167973" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="footer__social-icon"><FaWhatsapp /></a>
-              <a href="#" aria-label="Twitter" className="footer__social-icon"><FiTwitter /></a>
             </div>
           </div>
 
@@ -180,28 +179,25 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="footer__bottom">
         <div className="container footer__bottom-inner">
-          <div className="footer__bottom-meta">
-            <p className="footer__copy">
-              Copyright © {new Date().getFullYear()} S-MART. All rights reserved.
-            </p>
-            <span className="footer__bottom-divider">•</span>
-            <p className="footer__powered">
-              Designed &amp; Developed by{' '}
-              <a
-                href="https://vawtechnologies.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer__powered-link"
-              >
-                VAW Technologies
-              </a>
-            </p>
-          </div>
+          <p className="footer__copy">
+            Copyright © {new Date().getFullYear()} S-MART. All rights reserved.
+          </p>
           <div className="footer__bottom-links">
             <Link to="/terms" className="footer__terms-link">
               Terms &amp; Conditions
             </Link>
           </div>
+          <p className="footer__powered">
+            Designed &amp; Developed by{' '}
+            <a
+              href="https://vawtechnologies.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer__powered-link"
+            >
+              VAW Technologies
+            </a>
+          </p>
         </div>
       </div>
 

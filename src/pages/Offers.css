@@ -336,6 +336,30 @@
   box-shadow: 0 4px 8px rgba(34, 197, 94, 0.25);
 }
 
+.deal-premium-card__validity-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.deal-premium-card__validity-tag svg {
+  color: var(--clr-accent-gold);
+}
+
 .deal-premium-card__body {
   padding: 1.25rem;
   display: flex;
@@ -403,52 +427,6 @@
   background: #fef3c7;
   padding: 0.2rem 0.5rem;
   border-radius: 6px;
-}
-
-/* Footer validity */
-.deal-premium-card__footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 1rem;
-  border-top: 1px solid #f1f5f1;
-  padding-top: 0.85rem;
-}
-
-.deal-premium-card__footer .validity {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.7rem;
-  color: var(--clr-text-muted);
-}
-
-.deal-premium-card__footer .validity .icon {
-  font-size: 0.8rem;
-  color: #9ca3af;
-}
-
-.details-link {
-  font-size: 0.72rem;
-  font-weight: 800;
-  color: #16a34a;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  transition: all 0.2s;
-}
-
-.details-link:hover {
-  color: #15803d;
-}
-
-.details-link .arrow {
-  transition: transform 0.2s;
-}
-
-.details-link:hover .arrow {
-  transform: translateX(3px);
 }
 
 /* Empty State Styles */
@@ -602,7 +580,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
   .offers-premium-hero__container {
     grid-template-columns: 1.25fr 0.75fr;
     gap: 0.85rem;
@@ -623,22 +601,29 @@
     display: none;
   }
   .deals-premium-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+  .deal-premium-card__image-container {
+    height: 180px;
+  }
+  .deal-premium-card__img {
+    max-height: 160px;
   }
   .saver-showcase__link {
     height: auto;
   }
   .deal-premium-card__body {
-    padding: 0.85rem;
+    padding: 1.25rem;
   }
   .deal-premium-card__name {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
   }
   .price-active {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
   }
   .save-tag {
-    display: none;
+    display: inline-block;
   }
 }

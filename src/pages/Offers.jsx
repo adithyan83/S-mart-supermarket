@@ -35,6 +35,21 @@ const hotDeals = [
   { id: 8, img: groceryImg,     cat: 'grocery',   name: 'Tata Salt – Pure & Iodised',  qty: '1 kg',       price: 18,  mrp: 22,  discount: 18 },
 ]
 
+function getDaysRemaining(expiryDateStr = '2026-08-31T23:59:59') {
+  const expiry = new Date(expiryDateStr)
+  const now = new Date()
+  const diffTime = expiry - now
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+  
+  if (diffDays <= 0) {
+    return 'Ended'
+  } else if (diffDays === 1) {
+    return 'Ends in 1 day'
+  } else {
+    return `Ends in ${diffDays} days`
+  }
+}
+
 export default function Offers() {
   return (
     <motion.div
@@ -136,6 +151,9 @@ export default function Offers() {
                     <span className="deal-premium-card__discount-tag">
                       {deal.discount}% OFF
                     </span>
+                    <span className="deal-premium-card__validity-tag">
+                      <FiClock size={12} /> {getDaysRemaining()}
+                    </span>
                     <img src={deal.img} alt={deal.name} className="deal-premium-card__img" />
                   </div>
                   <div className="deal-premium-card__body">
@@ -149,15 +167,6 @@ export default function Offers() {
                         <span className="price-mrp">₹{deal.mrp}</span>
                       </div>
                       <span className="save-tag">Save ₹{deal.mrp - deal.price}</span>
-                    </div>
-
-                    <div className="deal-premium-card__footer">
-                      <span className="validity">
-                        <FiCalendar className="icon" /> Valid till 31 AUG 2026
-                      </span>
-                      <Link to="/products" className="details-link">
-                        View details <FiArrowRight className="arrow" />
-                      </Link>
                     </div>
                   </div>
                 </motion.div>
