@@ -504,7 +504,7 @@
   border-color: #ffffff;
 }
 
-/* â”€â”€ Responsive Refinements â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Responsive Refinements ─────────────────────────────── */
 @media (max-width: 1200px) {
   .deals-premium-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -580,50 +580,126 @@
   }
 }
 
+/* ── Mobile: Arrange like desktop (2-col grid, side-by-side hero) ── */
 @media (max-width: 576px) {
+  .offers-premium-hero {
+    padding: 2rem 0;
+  }
   .offers-premium-hero__container {
-    grid-template-columns: 1.25fr 0.75fr;
-    gap: 0.85rem;
-  }
-  .offers-premium-hero__title {
-    font-size: 1.15rem;
-  }
-  .offers-premium-hero__subtitle {
-    display: none;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 0.75rem;
+    align-items: center;
   }
   .offers-premium-hero__breadcrumb {
+    margin-bottom: 0.5rem;
+    font-size: 0.7rem;
+  }
+  .offers-premium-hero__title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+  .offers-premium-hero__subtitle {
+    font-size: 0.72rem;
+    line-height: 1.4;
     margin-bottom: 0.75rem;
+    display: block;
+  }
+  .offers-premium-hero__stats {
+    gap: 0.35rem;
+  }
+  .stat-pill {
+    padding: 0.25rem 0.55rem;
+    font-size: 0.6rem;
+    gap: 0.3rem;
+  }
+  .stat-pill .icon {
+    font-size: 0.7rem;
   }
   .image-panel__card {
-    height: 130px;
+    height: 140px;
+    border-radius: 12px;
   }
   .image-panel__badge {
+    bottom: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    gap: 0.35rem;
+    border-radius: 8px;
+    display: flex;
+  }
+  .image-panel__badge .percentage {
+    width: 22px;
+    height: 22px;
+    font-size: 0.65rem;
+  }
+  .badge-title {
+    font-size: 0.6rem;
+  }
+  .badge-subtitle {
     display: none;
   }
+
+  /* Keep 2-column product card grid like desktop */
   .deals-premium-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 0 0.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    padding: 0;
   }
   .deal-premium-card__image-container {
-    height: 180px;
+    height: 120px;
   }
   .deal-premium-card__img {
-    max-height: 160px;
+    max-height: 105px;
+  }
+  .deal-premium-card__validity-tag {
+    font-size: 0.55rem;
+    padding: 0.18rem 0.38rem;
+    gap: 2px;
+    top: 6px;
+    right: 6px;
+  }
+  .deal-premium-card__discount-tag {
+    font-size: 0.55rem;
+    padding: 0.18rem 0.38rem;
+    top: 6px;
+    left: 6px;
+  }
+  .deal-premium-card__body {
+    padding: 0.65rem;
+  }
+  .deal-premium-card__category {
+    font-size: 0.55rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.15rem;
+  }
+  .deal-premium-card__name {
+    font-size: 0.78rem;
+    margin-bottom: 0.15rem;
+  }
+  .deal-premium-card__qty {
+    font-size: 0.68rem;
+    margin-bottom: 0.1rem;
+  }
+  .deal-premium-card__pricing-row {
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+  }
+  .price-active {
+    font-size: 1rem;
+  }
+  .price-mrp {
+    font-size: 0.7rem;
+  }
+  .save-tag {
+    font-size: 0.58rem;
+    padding: 0.12rem 0.3rem;
+    display: inline-block;
   }
   .saver-showcase__link {
     height: auto;
   }
-  .deal-premium-card__body {
-    padding: 1.25rem;
-  }
-  .deal-premium-card__name {
-    font-size: 0.95rem;
-  }
-  .price-active {
-    font-size: 1.25rem;
-  }
-  .save-tag {
-    display: inline-block;
-  }
 }
+
