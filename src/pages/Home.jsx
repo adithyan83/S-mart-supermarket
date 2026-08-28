@@ -18,6 +18,12 @@ import daburLogo from '../assets/dabur.svg'
 import easternLogo from '../assets/eastern.png'
 import parleLogo from '../assets/parle.svg'
 import pepsicoLogo from '../assets/pepsico.svg'
+import groceryImg from '../assets/grocery_card.png'
+import fruitsImg from '../assets/fruits_card.png'
+import personalCareImg from '../assets/personal_care_card.png'
+import beveragesImg from '../assets/beverages_card.png'
+import dairyImg from '../assets/dairy_card.png'
+import frozenImg from '../assets/frozen_card.png'
 import './Home.css'
 
 const brands = [
@@ -29,14 +35,13 @@ const brands = [
   { label: 'Pepsico', logo: pepsicoLogo },
 ]
 
-/* ── Data ─────────────────────────────────────────── */
 const categories = [
-  { icon: <MdOutlineLocalGroceryStore />, label: 'Grocery', color: '#22c55e', bg: '#f0fdf4' },
-  { icon: <MdOutlineEco />, label: 'Fresh Produce', color: '#16a34a', bg: '#f0fdf4' },
-  { icon: <MdOutlineFavorite />, label: 'Personal Care', color: '#f97316', bg: '#fff7ed' },
-  { icon: <MdOutlineLocalDrink />, label: 'Beverages', color: '#3b82f6', bg: '#eff6ff' },
-  { icon: <MdOutlineLunchDining />, label: 'Dairy Products', color: '#a855f7', bg: '#f3e8ff' },
-  { icon: <MdOutlineAcUnit />, label: 'Frozen Foods', color: '#06b6d4', bg: '#ecfeff' },
+  { icon: <MdOutlineLocalGroceryStore />, label: 'Grocery', color: '#22c55e', bg: '#f0fdf4', img: groceryImg },
+  { icon: <MdOutlineEco />, label: 'Fresh Produce', color: '#16a34a', bg: '#f0fdf4', img: fruitsImg },
+  { icon: <MdOutlineFavorite />, label: 'Personal Care', color: '#f97316', bg: '#fff7ed', img: personalCareImg },
+  { icon: <MdOutlineLocalDrink />, label: 'Beverages', color: '#3b82f6', bg: '#eff6ff', img: beveragesImg },
+  { icon: <MdOutlineLunchDining />, label: 'Dairy Products', color: '#a855f7', bg: '#f3e8ff', img: dairyImg },
+  { icon: <MdOutlineAcUnit />, label: 'Frozen Foods', color: '#06b6d4', bg: '#ecfeff', img: frozenImg },
 ]
 
 const whyChoose = [
@@ -220,6 +225,9 @@ export default function Home() {
                 <Link to="/products" className="cat-card-mobile" style={{ '--cat-bg': cat.bg }}>
                   <div className="cat-card-mobile__icon" style={{ '--cat-color': cat.color }}>
                     {cat.icon}
+                  </div>
+                  <div className="cat-card-mobile__image-wrapper">
+                    <img src={cat.img} alt={cat.label} className="cat-card-mobile__img" />
                   </div>
                   <span className="cat-card-mobile__label">{cat.label}</span>
                 </Link>
