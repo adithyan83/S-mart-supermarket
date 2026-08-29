@@ -7,11 +7,10 @@ import {
 } from 'react-icons/fi'
 import {
   MdOutlineLocalGroceryStore, MdOutlineEco, MdOutlineLocalDrink,
-  MdOutlineLunchDining, MdOutlineAcUnit, MdOutlineFavorite, MdOutlineLocalOffer
+  MdOutlineLunchDining, MdOutlineAcUnit, MdOutlineFavorite
 } from 'react-icons/md'
 import AnimatedSection from '../components/AnimatedSection'
 import heroBanner from '../assets/hero_banner.png'
-import dealsBanner from '../assets/deals_banner.png'
 import nestleLogo from '../assets/nestle.svg'
 import itcLogo from '../assets/itc.svg'
 import daburLogo from '../assets/dabur.svg'
@@ -248,36 +247,6 @@ export default function Home() {
                 </div>
               </div>
               <FiChevronRight className="help-banner-mobile__arrow" size={20} />
-            </Link>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* ── Offers Banner ─────────────────── */}
-      <section className="home-offers-banner">
-        <div className="container">
-          <AnimatedSection variant="fadeUp">
-            <Link to="/offers" className="home-offers-banner__wrap">
-              <img
-                src={dealsBanner}
-                alt="Weekly Deals – Fresh Organic Vegetables & Fruits"
-                className="home-offers-banner__img"
-              />
-              <div className="home-offers-banner__overlay">
-                <span className="home-offers-banner__label">
-                  <MdOutlineLocalOffer /> Limited Time
-                </span>
-                <h2 className="home-offers-banner__title">
-                  Up to <span className="gradient-text">40% Off</span><br />
-                  Fresh Organic Produce
-                </h2>
-                <p className="home-offers-banner__sub">
-                  Weekly deals on vegetables, fruits &amp; groceries. Don't miss out!
-                </p>
-                <span className="home-offers-banner__cta btn btn-primary">
-                  View All Offers <FiArrowRight />
-                </span>
-              </div>
             </Link>
           </AnimatedSection>
         </div>
