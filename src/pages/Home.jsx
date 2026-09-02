@@ -10,6 +10,7 @@ import {
   MdOutlineLunchDining, MdOutlineAcUnit, MdOutlineFavorite
 } from 'react-icons/md'
 import AnimatedSection from '../components/AnimatedSection'
+import OfferBannerCarousel from '../components/OfferBannerCarousel'
 import heroBanner from '../assets/hero_banner.png'
 import nestleLogo from '../assets/nestle.svg'
 import itcLogo from '../assets/itc.svg'
@@ -209,6 +210,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* ── Landscape Offer Banners Carousel ───────── */}
+      <OfferBannerCarousel />
 
       {/* ── Shop By Category ─────────────── */}
       <section className="section categories-section">

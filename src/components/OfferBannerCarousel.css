@@ -1,0 +1,479 @@
+/* ── Offer Banner Carousel Styles ─────────────────────────── */
+
+.offer-carousel-wrapper {
+  position: relative;
+  padding: 2.5rem 0;
+  background: linear-gradient(180deg, #f8faf7 0%, #ffffff 100%);
+  overflow: hidden;
+}
+
+.offer-carousel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.offer-carousel-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #16a34a;
+  text-transform: uppercase;
+  background: #dcfce7;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  margin-bottom: 0.5rem;
+}
+
+.offer-carousel-title {
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  font-weight: 900;
+  color: #111827;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  line-height: 1.2;
+}
+
+.highlight-badge {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 900;
+  padding: 0.25rem 0.75rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.offer-carousel-controls-desktop {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.carousel-arrow-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.carousel-arrow-btn:hover {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(22, 163, 74, 0.25);
+}
+
+.carousel-counter {
+  font-size: 0.9rem;
+  color: #6b7280;
+  letter-spacing: 1px;
+}
+
+.carousel-counter strong {
+  color: #111827;
+  font-size: 1.1rem;
+}
+
+/* Landscape Viewport & Cards */
+.offer-carousel-viewport {
+  position: relative;
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.offer-landscape-banner {
+  position: relative;
+  width: 100%;
+  min-height: 380px;
+  border-radius: 24px;
+  padding: 2.5rem 3rem;
+  cursor: grab;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.offer-landscape-banner:active {
+  cursor: grabbing;
+}
+
+.banner-ambient-glow {
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.offer-landscape-banner__grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 2rem;
+  height: 100%;
+}
+
+.banner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #ffffff;
+}
+
+.banner-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.banner-cat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+}
+
+.banner-discount-pill {
+  background: #facc15;
+  color: #1e1b4b;
+  font-size: 0.8rem;
+  font-weight: 900;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(250, 204, 21, 0.4);
+}
+
+.banner-heading {
+  font-size: clamp(1.8rem, 4.2vw, 3rem);
+  font-weight: 900;
+  line-height: 1.15;
+  margin: 0 0 0.85rem 0;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  letter-spacing: -0.5px;
+}
+
+.banner-subtext {
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 1.75rem 0;
+  max-width: 580px;
+}
+
+.banner-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.banner-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: all 0.25s ease;
+}
+
+.banner-btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: #f8fafc;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  color: #16a34a;
+}
+
+.banner-btn-primary .arrow-icon {
+  transition: transform 0.2s ease;
+}
+
+.banner-btn-primary:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+.banner-offer-note {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Banner Image Panel */
+.banner-image-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.banner-image-halo {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: 1;
+}
+
+.banner-img {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.35));
+  transition: transform 0.4s ease;
+  pointer-events: none;
+}
+
+.offer-landscape-banner:hover .banner-img {
+  transform: scale(1.05) rotate(1deg);
+}
+
+/* Overlay Navigation Arrows (for touch & hover) */
+.carousel-overlay-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  border: none;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.offer-carousel-viewport:hover .carousel-overlay-arrow {
+  opacity: 1;
+}
+
+.carousel-overlay-arrow--prev {
+  left: 1.25rem;
+}
+
+.carousel-overlay-arrow--next {
+  right: 1.25rem;
+}
+
+.carousel-overlay-arrow:hover {
+  background: #ffffff;
+  color: #16a34a;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Carousel Footer Controls */
+.offer-carousel-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.offer-carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.carousel-dot {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot-fill {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-dot:hover .dot-fill {
+  background: #94a3b8;
+  transform: scale(1.2);
+}
+
+.carousel-dot--active .dot-fill {
+  width: 28px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #16a34a;
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.4);
+}
+
+.offer-carousel-pause-hint {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.swipe-hint-text {
+  display: inline-block;
+  opacity: 0.85;
+}
+
+/* ── Responsive Media Queries ────────────────────────── */
+@media (max-width: 992px) {
+  .offer-landscape-banner {
+    padding: 2rem;
+    min-height: 340px;
+  }
+
+  .offer-landscape-banner__grid {
+    grid-template-columns: 1fr 0.9fr;
+    gap: 1.5rem;
+  }
+
+  .banner-heading {
+    font-size: 2.2rem;
+  }
+
+  .banner-img {
+    max-height: 230px;
+  }
+}
+
+@media (max-width: 768px) {
+  .offer-carousel-wrapper {
+    padding: 1.75rem 0;
+  }
+
+  .offer-carousel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .offer-carousel-controls-desktop {
+    display: none;
+  }
+
+  .offer-landscape-banner {
+    padding: 1.75rem 1.25rem;
+    min-height: auto;
+    border-radius: 20px;
+  }
+
+  .offer-landscape-banner__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    text-align: center;
+  }
+
+  .banner-content {
+    align-items: center;
+  }
+
+  .banner-badges {
+    justify-content: center;
+  }
+
+  .banner-heading {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .banner-subtext {
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .banner-cta-row {
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .banner-btn-primary {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .banner-image-wrapper {
+    height: 180px;
+    order: -1; /* Display banner image above title on mobile for punchy visual */
+  }
+
+  .banner-img {
+    max-height: 170px;
+  }
+
+  .carousel-overlay-arrow {
+    display: none !important;
+  }
+
+  .offer-carousel-footer {
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
