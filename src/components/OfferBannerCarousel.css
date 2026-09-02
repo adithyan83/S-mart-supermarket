@@ -114,6 +114,10 @@
   cursor: grab;
   overflow: hidden;
   box-sizing: border-box;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  touch-action: pan-y;
 }
 
 .offer-landscape-banner:active {

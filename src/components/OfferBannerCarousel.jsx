@@ -71,7 +71,7 @@ const slideVariants = {
   enter: (direction) => ({
     x: direction > 0 ? '100%' : '-100%',
     opacity: 0,
-    scale: 0.96,
+    scale: 0.93,
   }),
   center: {
     zIndex: 1,
@@ -79,20 +79,20 @@ const slideVariants = {
     opacity: 1,
     scale: 1,
     transition: {
-      x: { type: 'spring', stiffness: 300, damping: 30 },
-      opacity: { duration: 0.3 },
-      scale: { duration: 0.3 },
+      x: { type: 'spring', stiffness: 280, damping: 28, mass: 0.75 },
+      opacity: { duration: 0.25, ease: [0.25, 0.1, 0.25, 1] },
+      scale: { duration: 0.25, ease: [0.25, 0.1, 0.25, 1] },
     },
   },
   exit: (direction) => ({
     zIndex: 0,
     x: direction < 0 ? '100%' : '-100%',
     opacity: 0,
-    scale: 0.96,
+    scale: 0.93,
     transition: {
-      x: { type: 'spring', stiffness: 300, damping: 30 },
-      opacity: { duration: 0.3 },
-      scale: { duration: 0.3 },
+      x: { type: 'spring', stiffness: 280, damping: 28, mass: 0.75 },
+      opacity: { duration: 0.25, ease: [0.25, 0.1, 0.25, 1] },
+      scale: { duration: 0.25, ease: [0.25, 0.1, 0.25, 1] },
     },
   }),
 }
@@ -134,10 +134,10 @@ export default function OfferBannerCarousel() {
     }
   }, [isPaused, paginate])
 
-  // Drag End handler for manual touch & mouse swipe
+  // Drag End handler for ultra-responsive mobile touch & mouse swipe
   const handleDragEnd = (event, info) => {
-    const swipeThreshold = 50
-    const velocityThreshold = 300
+    const swipeThreshold = 30
+    const velocityThreshold = 180
 
     if (info.offset.x < -swipeThreshold || info.velocity.x < -velocityThreshold) {
       paginate(1)
@@ -179,7 +179,8 @@ export default function OfferBannerCarousel() {
               exit="exit"
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.2}
+              dragElastic={0.65}
+              whileDrag={{ scale: 0.985 }}
               onDragEnd={handleDragEnd}
               className="offer-landscape-banner"
               style={{
